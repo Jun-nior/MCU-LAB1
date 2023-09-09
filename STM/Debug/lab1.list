@@ -139,8 +139,8 @@ int main(void)
  8000180:	2140      	movs	r1, #64	; 0x40
  8000182:	4805      	ldr	r0, [pc, #20]	; (8000198 <main+0x4c>)
  8000184:	f000 fc00 	bl	8000988 <HAL_GPIO_TogglePin>
-		  count=2;
- 8000188:	2302      	movs	r3, #2
+		  count=1;
+ 8000188:	2301      	movs	r3, #1
  800018a:	607b      	str	r3, [r7, #4]
 	  }
 	  HAL_Delay (1000);

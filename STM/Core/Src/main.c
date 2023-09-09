@@ -100,7 +100,7 @@ int main(void)
 	  } else {
 		  HAL_GPIO_TogglePin( LED_RED_GPIO_Port , LED_RED_Pin );
 		  HAL_GPIO_TogglePin( LED_YELLOW_GPIO_Port , LED_YELLOW_Pin );
-		  count=2;
+		  count=1;
 	  }
 	  HAL_Delay (1000);
     /* USER CODE END WHILE */
