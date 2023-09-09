@@ -19,7 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-// test ex2
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -91,11 +91,29 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port,LED_YELLOW_Pin,SET);
+  HAL_GPIO_WritePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin,SET);
+  int red=5,yellow=2,green=3;
   while (1)
   {
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
+    if (red>0) {
+    	red--;
+    } else if (red<=0 && green>0) {
+    	HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,SET);
+    	HAL_GPIO_WritePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin,RESET);
+    	green--;
+    } else if (red<=0 && green<=0 && yellow>0) {
+    	HAL_GPIO_WritePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin,SET);
+    	HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port,LED_YELLOW_Pin,RESET);
+    	yellow--;
+    } else {
+    	red=4;
+    	yellow=2;
+    	green=3;
+    	HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port,LED_YELLOW_Pin,SET);
+    	HAL_GPIO_WritePin(LED_RED_GPIO_Port,LED_RED_Pin,RESET);
+    }
+    HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
