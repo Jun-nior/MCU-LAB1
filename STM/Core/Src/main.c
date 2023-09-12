@@ -92,14 +92,41 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   clearAllClock();
-  int num=0; int num1=-1;
+  int second=0, minutes=0, hour=0;
   while (1)
   {
-	  setNumberOnClock(num);
-	  num++;
-	  clearNumberOnClock(num1);
-	  num1++;
-	  HAL_Delay(1000);
+	  if (second>=60) {
+		  second=0;
+		  if (minutes/5!=11 && hour!=11) {
+			  clearNumberOnClock(11);
+		  }
+		  minutes++;
+	  }
+	  if (minutes>=60) {
+		  minutes=0;
+		  if (second/5!=11 && hour!=11) {
+			  clearNumberOnClock(11);
+		  }
+		  hour++;
+	  }
+	  if (hour>=12) {
+		  hour=0;
+		  clearAllClock();
+	  }
+	  if (minutes/5!=(second/5-1) && hour!=(second/5 -1)) {
+		  clearNumberOnClock(second/5 -1);
+	  }
+	  setNumberOnClock(second/5);
+	  if (second/5!=(minutes/5-1) && hour!=(minutes/5 -1)) {
+		  clearNumberOnClock(minutes/5 -1);
+	  }
+	  setNumberOnClock(minutes/5);
+	  if (second/5!=hour-1 && minutes/5!=hour-1) {
+		  clearNumberOnClock(hour-1);
+	  }
+	  setNumberOnClock(hour);
+	  second++;
+	  HAL_Delay(10);
   }
   /* USER CODE END 3 */
 }
