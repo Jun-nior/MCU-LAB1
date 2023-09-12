@@ -91,11 +91,15 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  clearAllClock();
+  int num=0; int num1=-1;
   while (1)
   {
-    /* USER CODE END WHILE */
-	  clearAllClock();
-    /* USER CODE BEGIN 3 */
+	  setNumberOnClock(num);
+	  num++;
+	  clearNumberOnClock(num1);
+	  num1++;
+	  HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
