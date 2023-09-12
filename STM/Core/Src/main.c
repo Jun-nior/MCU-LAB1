@@ -101,6 +101,9 @@ int main(void)
 			  clearNumberOnClock(11);
 		  }
 		  minutes++;
+		  if (second/5!=(minutes/5-1) && hour!=(minutes/5 -1)) {
+			  clearNumberOnClock(minutes/5 -1);
+		  }
 	  }
 	  if (minutes>=60) {
 		  minutes=0;
@@ -108,6 +111,9 @@ int main(void)
 			  clearNumberOnClock(11);
 		  }
 		  hour++;
+		  if (second/5!=hour-1 && minutes/5!=hour-1) {
+			  clearNumberOnClock(hour-1);
+		  }
 	  }
 	  if (hour>=12) {
 		  hour=0;
@@ -117,13 +123,7 @@ int main(void)
 		  clearNumberOnClock(second/5 -1);
 	  }
 	  setNumberOnClock(second/5);
-	  if (second/5!=(minutes/5-1) && hour!=(minutes/5 -1)) {
-		  clearNumberOnClock(minutes/5 -1);
-	  }
 	  setNumberOnClock(minutes/5);
-	  if (second/5!=hour-1 && minutes/5!=hour-1) {
-		  clearNumberOnClock(hour-1);
-	  }
 	  setNumberOnClock(hour);
 	  second++;
 	  HAL_Delay(10);
